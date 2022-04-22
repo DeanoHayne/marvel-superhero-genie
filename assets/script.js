@@ -76,7 +76,7 @@ var getHeroRepos = function (hero) {
         storeSearch(foundHero);
       } else if (heroSearch === undefined) {
         marvelHeroEl.textContent = "Sorry no heroes found";
-        noResultsModal(".modal-wrapper", ".modal-content", true);
+        // noResultsModal(".modal-wrapper", ".modal-content", true);
       }
     });
   });
@@ -108,7 +108,7 @@ var displayHero = function (foundHero, heroID) {
   console.log("passed display hero function and ID is " + heroID);
   if (foundHero.length === 0) {
     marvelHeroEl.textContent = "No hero found";
-    noResultsModal(".modal-wrapper", ".modal-content", true);
+    // noResultsModal(".modal-wrapper", ".modal-content", true);
     return;
   }
 
@@ -197,7 +197,7 @@ var getYouTubeVideo = function (foundHero) {
       } else {
         youtubeBodyEl.innerHTML = "";
         youtubeBodyEl.textContent = "Sorry no hero video found";
-        noResultsModal(".modal-wrapper", ".modal-content", true);
+        // noResultsModal(".modal-wrapper", ".modal-content", true);
       }
     });
   });
@@ -207,7 +207,7 @@ var getYouTubeVideo = function (foundHero) {
 var displayHeroVideo = function (heroVideoId) {
   if (heroVideoId.length === 0) {
     marvelHeroEl.textContent = "No video found";
-    noResultsModal(".modal-wrapper", ".modal-content", true);
+    // noResultsModal(".modal-wrapper", ".modal-content", true);
     return;
   }
   //added this as the video kept appending children when a new search started
@@ -232,39 +232,39 @@ var displayHeroVideo = function (heroVideoId) {
 };
 
 // MODAL
-function noResultsModal(
-  modalWrapperSelector,
-  modalContentSelector,
-  closeModal = false
-) {
-  //select the elements
-  const modalWrapperElement = document.querySelector(modalWrapperSelector);
-  const modalContentElement = document.querySelector(modalContentSelector);
+// function noResultsModal(
+//   modalWrapperSelector,
+//   modalContentSelector,
+//   closeModal = false
+// ) {
+//   //select the elements
+//   const modalWrapperElement = document.querySelector(modalWrapperSelector);
+//   const modalContentElement = document.querySelector(modalContentSelector);
 
-  // style the modal elements
-  modalWrapperElement.classList.add("modal-wrapper");
-  modalContentElement.classList.add("modal-content");
+//   // style the modal elements
+//   modalWrapperElement.classList.add("modal-wrapper");
+//   modalContentElement.classList.add("modal-content");
 
-  //update modal to display
-  modalWrapperElement.style.display = "block";
+//   //update modal to display
+//   modalWrapperElement.style.display = "block";
 
-  //add X button to close modal
-  if (closeModal) {
-    modalContentElement.innerHTML += "<span class='close-modal'>&times;</span>";
+//   //add X button to close modal
+//   if (closeModal) {
+//     modalContentElement.innerHTML += "<span class='close-modal'>&times;</span>";
 
-    const closeModalBtn = modalContentElement.querySelector(".close-modal");
+//     const closeModalBtn = modalContentElement.querySelector(".close-modal");
 
-    closeModalBtn.addEventListener("click", () => {
-      modalWrapperElement.style.display = "none";
-    });
-  }
+//     closeModalBtn.addEventListener("click", () => {
+//       modalWrapperElement.style.display = "none";
+//     });
+//   }
 
-  //close modal if click outside of the modal
-  modalWrapperElement.addEventListener("click", (event) => {
-    if (event.target === modalWrapperElement) {
-      modalWrapperElement.style.display = "none";
-    }
-  });
-}
+//   //close modal if click outside of the modal
+//   modalWrapperElement.addEventListener("click", (event) => {
+//     if (event.target === modalWrapperElement) {
+//       modalWrapperElement.style.display = "none";
+//     }
+//   });
+// }
 
 searchFormEl.addEventListener("submit", formSubmitHandler);
